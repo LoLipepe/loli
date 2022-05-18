@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="jslib/mustache.js"></script>
+    <!-- 模板元素的使用 -->
+    <template id="test1">
+        {{#arr}}
+        <div>
+            我叫
+            {{name}}
+            我今年
+            {{age}}
+        </div>
+        {{/arr}}
+        {{#b}}
+        <p>111111111</p>
+        {{/b}}
+    </template>
+    <div id="test"></div>
+    <script>
+        let t = document.getElementById('test1').innerHTML
+        console.log(t)
+        const d = Mustache.render(t, {
+            b: false,
+            arr: [{
+                name: 1,
+                age: 2
+            }]
+        })
+        const test = document.getElementById('test')
+        test.innerHTML = d
+    </script>
+</body>
+
+</html>
